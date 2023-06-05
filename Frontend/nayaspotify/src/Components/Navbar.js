@@ -11,7 +11,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg"  style={{backgroundColor: '#4a83ad'}}>
   <div className="container-fluid">
     <img className='mx-2' style={{maxWidth:'60px', height: 'auto'}} src='https://f-droid.org/repo/oss.krtirtho.spotube/en-US/icon_EaTkEc16Bx_7Z1cLOx4QsbZ7Em7NHK8-yEtLNBh5ixE=.png' alt='Logo'/>
-    <Link className="navbar-brand text-light fw-bold" to="/">Nayaspotify</Link>
+    <Link className="navbar-brand text-light fw-bold" to="/">FALAH KI SPOTIFY</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

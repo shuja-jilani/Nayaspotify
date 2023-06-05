@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import ReactAudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-
+import axios from 'axios';
 const styles = {
     root: {
       backgroundColor: '#73c3d2',
@@ -54,84 +54,89 @@ const styles = {
   };
   
   const HomePage = () => {
-    const artists = [
-      {
-        name: 'Artist 1',
-        songs: [
-          {
-            title: 'Song 1',
-            src: 'song1.mp3',
-            cover: 'song1-cover.jpg',
-          },
-          {
-            title: 'Song 2',
-            src: 'song2.mp3',
-            cover: 'song2-cover.jpg',
-          },
-          {
-            title: 'Song 1',
-            src: 'song1.mp3',
-            cover: 'song1-cover.jpg',
-          },
-          {
-            title: 'Song 2',
-            src: 'song2.mp3',
-            cover: 'song2-cover.jpg',
-          },
-        ],
-      },
-      {
-        name: 'Artist 2',
-        songs: [
-          {
-            title: 'Song 3',
-            src: 'song3.mp3',
-            cover: 'song3-cover.jpg',
-          },
-          {
-            title: 'Song 4',
-            src: 'song4.mp3',
-            cover: 'song4-cover.jpg',
-          },
-          {
-            title: 'Song 3',
-            src: 'song3.mp3',
-            cover: 'song3-cover.jpg',
-          },
-          {
-            title: 'Song 4',
-            src: 'song4.mp3',
-            cover: 'song4-cover.jpg',
-          },
-        ],
-    },
-    {
-        name: 'Artist 3',
-        songs: [
-          {
-            title: 'Song 1',
-            src: 'song1.mp3',
-            cover: 'song1-cover.jpg',
-          },
-          {
-            title: 'Song 2',
-            src: 'song2.mp3',
-            cover: 'song2-cover.jpg',
-          },
-          {
-            title: 'Song 1',
-            src: 'song1.mp3',
-            cover: 'song1-cover.jpg',
-          },
-          {
-            title: 'Song 2',
-            src: 'song2.mp3',
-            cover: 'song2-cover.jpg',
-          },
-        ],
-      },
-    ];
-  
+    const [artists, setArtists] = useState(null)
+    useEffect(()=>{
+        axios.get('http://localhost:5000/api/Artists')
+        .then((res)=> setArtists(res.data.artists));
+    },[]);
+    // const artists = [
+    //   {
+    //     name: 'Artist 1',
+    //     songs: [
+    //       {
+    //         title: 'Song 1',
+    //         src: 'song1.mp3',
+    //         cover: 'song1-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 2',
+    //         src: 'song2.mp3',
+    //         cover: 'song2-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 1',
+    //         src: 'song1.mp3',
+    //         cover: 'song1-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 2',
+    //         src: 'song2.mp3',
+    //         cover: 'song2-cover.jpg',
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     name: 'Artist 2',
+    //     songs: [
+    //       {
+    //         title: 'Song 3',
+    //         src: 'song3.mp3',
+    //         cover: 'song3-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 4',
+    //         src: 'song4.mp3',
+    //         cover: 'song4-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 3',
+    //         src: 'song3.mp3',
+    //         cover: 'song3-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 4',
+    //         src: 'song4.mp3',
+    //         cover: 'song4-cover.jpg',
+    //       },
+    //     ],
+    // },
+    // {
+    //     name: 'Artist 3',
+    //     songs: [
+    //       {
+    //         title: 'Song 1',
+    //         src: 'song1.mp3',
+    //         cover: 'song1-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 2',
+    //         src: 'song2.mp3',
+    //         cover: 'song2-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 1',
+    //         src: 'song1.mp3',
+    //         cover: 'song1-cover.jpg',
+    //       },
+    //       {
+    //         title: 'Song 2',
+    //         src: 'song2.mp3',
+    //         cover: 'song2-cover.jpg',
+    //       },
+    //     ],
+    //   },
+    // ];
+  if(artists === null ) return <div>loading</div>
     return (
       <div style={styles.root}>
         {artists.map((artist, index) => (
